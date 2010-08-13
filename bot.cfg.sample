@@ -1,0 +1,75 @@
+{dynamic_config_path, "dynamic.cfg"}.
+%% {include_config, "dynamic.cfg"}. %% Commenting out this entry is simpliest way to disable overlay
+
+{min_reconnection_timeout, 2000}.
+{max_reconnection_timeout, 15000}.
+{reconnection_factor, 2}.
+
+{muc_keepalive_rejoin_timeout, 60000}.
+{muc_access_denied_rejoin_timeout, 40000}.
+{muc_nick_conflict_rejoin_timeout, 100}.
+
+%% TODO
+{admins, [
+   "nagisa@loveless.im"
+]}.
+
+{servers, [
+  {srv_server_tld, [{addr, "server.tld"}, {port, 5222}]},
+  {srv_bad, [{addr, "server.nonexistent"}]}
+]}.
+
+{jids, [
+  [
+   {id, main},
+   {server, srv_server_tld},
+   {jid, "youji@server.tld"},
+   {password, "password"},
+   {status_text, "Bla-bla-bla"},
+   {resource, "SOME-RESOURCE"}, % optional, value may be "random"
+   {modules, [test]}
+  ]
+,
+  [
+   {id, second},
+   {server, srv_server_tld},
+   {jid, "zero@server.tld"},
+   {password, "password"},
+   {resource, "blah-blah"},
+   {mute, true} 
+  ]
+%,
+%  [
+%   {jid, "bad@bad.bad"},
+%   {id, bad"},
+%   {password, "password"},
+%   {server, srv_bad}
+%   {resource, random}
+%  ]
+]}.
+
+{rooms, [
+  {main,
+    [
+        [
+            {jid, "users@conference.some.srv"}, 
+            {nick, "Youji Sagan 0.1"}, 
+            {modules, []},
+            {mute, true}
+        ]
+       ,
+        [
+            {jid, "protected@conference.another.srv"}, 
+            {nick, "Youji Sagan 0.1"}, 
+            {password, "password"}
+        ]
+    ]
+  }
+,
+  {second,
+    [
+        [{jid, "users@conference.third.srv"}, {nick, "Youji Sagan 0.1"}], 
+        [{jid, "protected@conference.acme.inc"}, {nick, "Youji Sagan 0.1"}, {password, "password"}]
+    ]
+  }
+]}.
