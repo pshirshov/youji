@@ -15,7 +15,7 @@
 
 -include_lib("exmpp/include/exmpp.hrl").
 
--define (NS_MUC_b, list_to_binary(?NS_MUC_s)).
+%%-define (NS_MUC_b, list_to_binary(?NS_MUC_s)).
 %%<<"http://jabber.org/protocol/muc">>).
 
 %% copied from src/core/exmpp_presence.erl
